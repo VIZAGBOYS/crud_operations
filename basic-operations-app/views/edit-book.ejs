@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Book</title>
+    <link rel="stylesheet" href="/styles/edit-book.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="/books" class="nav-link">My Books</a>
+    </div>
+
+    <h1>Edit Book</h1>
+    <form action="/books/edit/<%= book._id %>" method="POST" enctype="multipart/form-data">
+        <input type="text" name="title" value="<%= book.title %>" required><br>
+        <textarea name="description" required><%= book.description %></textarea><br>
+        <input type="number" name="publishYear" value="<%= book.publishYear %>" required><br>
+        <input type="text" name="author" value="<%= book.author %>" required><br>
+        <input type="file" name="coverPage" accept="image/*"><br> <!-- Updated to file input -->
+        <% if (book.coverPagePath) { %>
+            <img src="<%= book.coverPagePath %>" alt="<%= book.title %>" class="cover-img"><br>
+            <label>Current Cover Image</label>
+        <% } %>
+        <button type="submit">Update Book</button>
+    </form>
+</body>
+</html>

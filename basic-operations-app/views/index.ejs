@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Search</title>
+    <link rel="stylesheet" href="/styles/index.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="/books" class="nav-link">My Books</a>
+    </nav>
+
+    <h1>Book Search</h1>
+
+    <!-- Search Form -->
+    <form action="/books/search" method="GET">
+        <input type="text" name="query" placeholder="Search books..." required>
+        <button type="submit">Search</button>
+    </form>
+
+    <!-- Display search results if they exist -->
+    <p><%= books.length %> items found</p> <!-- Display number of search results -->
+    <ul>
+        <% if (books && books.length > 0) { %>
+            <% books.forEach(book => { %>
+                <li class="book-item">
+                    <img src="<%= book.coverPagePath %>" alt="<%= book.title %>" class="book-image"> <!-- Book Image -->
+                    <div>
+                        <strong><%= book.title %></strong> by <%= book.author %> (<%= book.publishYear %>)
+                    </div>
+                </li>
+            <% }) %>
+        <% } else if (searchPerformed) { %> 
+            <!-- Show message if search was performed but no books were found -->
+            <p>No books found for your search query.</p>
+        <% } %>
+    </ul>
+
+</body>
+</html>

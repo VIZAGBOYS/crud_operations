@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Book</title>
+    <link rel="stylesheet" href="/styles/view-book.css">
+</head>
+<body>
+    <div class="navbar">
+        <a href="/books" class="nav-link">My Books</a>
+        <a href="/books/all" class="nav-link">All Books</a>
+    </div>
+
+    <h1><%= book.title %></h1>
+    <p><strong>Description:</strong> <%= book.description %></p>
+    <p><strong>Year:</strong> <%= book.publishYear %></p>
+    <p><strong>Author:</strong> <%= book.author %></p>
+    <p><strong>Cover:</strong> <img src="<%= book.coverPagePath %>" alt="<%= book.title %>"></p>
+    
+</body>
+</html>

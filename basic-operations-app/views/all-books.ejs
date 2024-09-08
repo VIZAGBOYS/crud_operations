@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Books</title>
+    <link rel="stylesheet" href="/styles/all-books.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="/books" class="nav-link">My Books</a>
+    </div>
+
+    <h1>All Books</h1>
+    <div class="books">
+        <% books.forEach(book => { %>
+        <div class="book-card">
+            <!-- Display the book cover image if it exists, otherwise show a placeholder -->
+            <% if (book.coverPagePath) { %>
+                <img src="<%= book.coverPagePath %>" alt="<%= book.title %> cover" class="book-cover">
+            <% } else { %>
+                <img src="/images/placeholder.png" alt="No cover available" class="book-cover">
+            <% } %>
+            <h2><%= book.title %></h2>
+            <p><%= book.author %></p>
+            <a href="/books/view/<%= book._id %>">View</a>
+        </div>
+        <% }) %>
+    </div>
+</body>
+</html>
