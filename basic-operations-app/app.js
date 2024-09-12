@@ -8,6 +8,7 @@ const bookRoutes = require('./routes/bookRoutes');
 const path = require('path');
 const helmet = require('helmet');
 const morgan = require('morgan');
+const methodOverride = require('method-override'); // Added
 require('dotenv').config(); // Import environment variables
 
 const app = express();
@@ -29,6 +30,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public'))); // Serve static files from 'public' directory
 app.use(helmet()); // Security middleware
 app.use(morgan('dev')); // Logging middleware
+app.use(methodOverride('_method')); // Middleware to support DELETE and PUT in forms
 
 // Session Setup
 app.use(session({

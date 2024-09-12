@@ -18,7 +18,7 @@ router.get('/edit/:id', bookController.renderEditBook);
 router.post('/edit/:id', bookController.updateBook);
 
 // Route to handle deleting a book
-router.post('/delete/:id', bookController.deleteBook); // Use POST method for deletion in forms
+router.delete('/delete/:id', bookController.deleteBook); // Use DELETE method for deletion
 
 // Route to render a single book view
 router.get('/view/:id', bookController.renderViewBook);
