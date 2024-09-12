@@ -31,6 +31,7 @@ body {
     margin: 0 15px;
     font-size: 16px;
     font-weight: bold;
+    font-family: 'Helvetica', sans-serif; /* New font */
 }
 
 .navbar .nav-link:hover {
@@ -60,8 +61,8 @@ form {
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    margin-top: 80px; /* Ensure form starts below the navbar */
+    margin: 80px auto 20px; /* Ensure form starts below the navbar and center it */
+    text-align: center; /* Center form elements */
 }
 
 /* Form input fields */
@@ -75,6 +76,7 @@ input[type="file"] {
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 16px;
+    text-align: left; /* Keep the input text aligned left */
 }
 
 /* Adjust textarea width and height */
@@ -186,3 +188,4 @@ table td.description {
     white-space: normal;
     text-overflow: ellipsis;
 }
+ 
