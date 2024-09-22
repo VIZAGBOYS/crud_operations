@@ -13,7 +13,10 @@
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
+<<<<<<< HEAD
     "bootstrap": "^5.3.3",
+=======
+>>>>>>> 09784b9c487dad769e3432d3b5af52e759fbae3f
     "connect-flash": "^0.1.1",
     "connect-mongo": "^5.1.0",
     "dotenv": "^16.4.5",

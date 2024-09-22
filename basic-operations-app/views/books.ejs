@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+<<<<<<< HEAD
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Books</title>
 
@@ -22,10 +23,23 @@
         }
         .actions .btn {
             margin-right: 5px; /* Space between buttons */
+=======
+    <title>Books</title>
+    <link rel="stylesheet" href="/styles/books.css">
+    <style>
+        #coverPreview {
+            display: none; /* Hide the preview image by default */
+            max-width: 100%; /* Make sure the preview image is responsive */
+            margin-top: 10px;
+        }
+        #uploadButton {
+            margin-top: 10px;
+>>>>>>> 09784b9c487dad769e3432d3b5af52e759fbae3f
         }
     </style>
 </head>
 <body>
+<<<<<<< HEAD
 
     <!-- Bootstrap Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #007bff;">
@@ -137,11 +151,142 @@
         document.querySelectorAll('.delete-form').forEach(form => {
             form.addEventListener('submit', function(e) {
                 if (!confirm('Are you sure you want to delete this book?')) {
+=======
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="/books/search" class="nav-link">Search</a>
+        <a href="/books/all" class="nav-link">All Books</a>
+        <a href="/logout" class="nav-link">Logout</a>
+    </nav>
+
+    <form action="/books" method="POST" enctype="multipart/form-data">
+        <h1>Create Book</h1>
+        <input type="text" name="title" placeholder="Title" required><br>
+        <textarea name="description" placeholder="Description" required></textarea><br>
+        <input type="number" name="publishYear" placeholder="Publish Year" required><br>
+        <input type="text" name="author" placeholder="Author" required><br>
+        <input type="file" id="coverPage" name="coverPage" accept="image/*" required><br>
+
+        <div id="previewContainer">
+            <img id="coverPreview" alt="Cover Page Preview">
+        </div>
+        <button type="submit" id="uploadButton">Create Book</button>
+    </form>
+
+    <!-- Display Flash Messages -->
+    <% if (message && message.success) { %>
+        <div class="alert success"><%= message.success %></div>
+    <% } %>
+    <% if (message && message.error) { %>
+        <div class="alert error"><%= message.error %></div>
+    <% } %>
+
+    <h2>My Books</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Year</th>
+                <th>Author</th>
+                <th>Cover Page</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (books && books.length > 0) { %>
+                <% books.forEach((book, index) => { %>
+                <tr>
+                    <td><%= index + 1 %></td> <!-- Serial Number -->
+                    <td><%= book.title %></td>
+                    <td class="description" title="<%= book.description %>"><%= book.description %></td>
+                    <td><%= book.publishYear %></td>
+                    <td><%= book.author %></td>
+                    <td>
+                        <% if (book.coverPagePath) { %>
+                            <img src="<%= book.coverPagePath %>" alt="<%= book.title %>" class="cover-img">
+                        <% } else { %>
+                            No image
+                        <% } %>
+                    </td>
+                    <td class="actions">
+                        <a href="/books/view/<%= book._id %>" class="btn view">View</a>
+                        <a href="/books/edit/<%= book._id %>" class="btn edit">Edit</a>
+                        <form action="/books/delete/<%= book._id %>?_method=DELETE" method="POST" class="delete-form">
+                            <button type="submit" class="btn delete-btn">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                <% }) %>
+            <% } else { %>
+                <tr>
+                    <td colspan="7">No books found</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+
+    <script>
+        // Image preview function
+        function previewCover(event) 
+        {
+            const coverPreview = document.getElementById('coverPage');
+            const file = event.target.files[0];
+
+            if (file) 
+            {
+                const reader = new FileReader();
+                reader.onload = function(e) 
+                {
+                    coverPreview.src = e.target.result;
+                    coverPreview.style.display = 'block'; // Show the image
+                }
+                reader.readAsDataURL(file); // Read the file as a data URL
+            } 
+            else 
+            {
+                coverPreview.src = ''; // Clear the image source
+                coverPreview.style.display = 'none'; // Hide the image
+            }
+        }
+
+        // Handle delete confirmation via JavaScript
+        document.querySelectorAll('.delete-btn').forEach(button => 
+        {
+            button.addEventListener('click', function(e) 
+            {
+                if (!confirm('Are you sure you want to delete this book?')) 
+                {
+>>>>>>> 09784b9c487dad769e3432d3b5af52e759fbae3f
                     e.preventDefault();
                 }
             });
         });
+<<<<<<< HEAD
     </script>
 
+=======
+
+        // Disable the submit button until a file is selected
+        const fileInput = document.getElementById('coverPage');
+        const uploadButton = document.getElementById('uploadButton');
+
+        fileInput.addEventListener('change', function() 
+        {
+            if (fileInput.files.length > 0) 
+            {
+                uploadButton.disabled = false; // Enable the button
+            } 
+            else 
+            {
+                uploadButton.disabled = true; // Disable the button if no file is selected
+            }
+        });
+
+        // Initially disable the upload button
+        uploadButton.disabled = true;
+    </script>
+>>>>>>> 09784b9c487dad769e3432d3b5af52e759fbae3f
 </body>
 </html>
