@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-<<<<<<< HEAD
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Search</title>
     <link rel="stylesheet" href="/styles/index.css">
@@ -76,43 +75,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-=======
-    <title>Book Search</title>
-    <link rel="stylesheet" href="/styles/index.css">
-</head>
-<body>
-
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <a href="/books" class="nav-link">My Books</a>
-    </nav>
-
-    <h1>Book Search</h1>
-
-    <!-- Search Form -->
-    <form action="/books/search" method="GET">
-        <input type="text" name="query" placeholder="Search books..." required>
-        <button type="submit">Search</button>
-    </form>
-
-    <!-- Display search results if they exist -->
-    <p><%= books.length %> items found</p> <!-- Display number of search results -->
-    <ul>
-        <% if (books && books.length > 0) { %>
-            <% books.forEach(book => { %>
-                <li class="book-item">
-                    <img src="<%= book.coverPagePath %>" alt="<%= book.title %>" class="book-image"> <!-- Book Image -->
-                    <div>
-                        <strong><%= book.title %></strong> by <%= book.author %> (<%= book.publishYear %>)
-                    </div>
-                </li>
-            <% }) %>
-        <% } else if (searchPerformed) { %> 
-            <!-- Show message if search was performed but no books were found -->
-            <p>No books found for your search query.</p>
-        <% } %>
-    </ul>
->>>>>>> 09784b9c487dad769e3432d3b5af52e759fbae3f
 
 </body>
 </html>

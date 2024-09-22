@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Signup</title>
-<<<<<<< HEAD
   <!-- Bootstrap CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
@@ -62,22 +61,5 @@
 
   <!-- Bootstrap JS Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-=======
-  <link rel="stylesheet" href="/styles/signup.css">
-</head>
-<body>
-  <h1>Signup</h1>
-  <% if (typeof error !== 'undefined' && error) { %>
-    <p class="error"><%= error %></p>
-  <% } %>
-  <form action="/signup" method="POST">
-    <input type="text" id="name" name="name" placeholder="Name" required>
-    <input type="email" id="email" name="email" placeholder="Email" required>
-    <input type="text" id="phnum" name="phnum" placeholder="Phone Number" required>
-    <input type="password" id="password" name="password" placeholder="Password" required>
-    <button type="submit">Signup</button>
-  </form>
-  <p><a href="/login">Click here to Login</a></p>
->>>>>>> 09784b9c487dad769e3432d3b5af52e759fbae3f
 </body>
 </html>
