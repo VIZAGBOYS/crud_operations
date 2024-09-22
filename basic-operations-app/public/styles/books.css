@@ -79,6 +79,9 @@ input[type="file"] {
     text-align: left; /* Keep the input text aligned left */
 }
 
+
+
+
 /* Adjust textarea width and height */
 textarea {
     height: 80px;
