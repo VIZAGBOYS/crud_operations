@@ -14,6 +14,16 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
+//homepage rendering
+const renderHome = (req, res) => {
+  try {
+    res.render('home'); 
+  } catch (err) {
+    console.error('Error rendering home page:', err);
+    res.status(500).send('Internal Server Error');
+  }
+};
+
 // Render the page to create a new book
 const renderCreateBook = async (req, res) => {
   try {
@@ -158,6 +168,7 @@ const searchBooks = async (req, res) => {
 
 // Exporting the controller functions to be used in routes
 module.exports = {
+  renderHome,
   renderCreateBook,
   createBook: [upload.single('coverPage'), createBook], // Add multer middleware for image upload
   renderEditBook,
