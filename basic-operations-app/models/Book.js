@@ -30,7 +30,8 @@ const BookSchema = new mongoose.Schema({
   coverPagePath: {
     type: String,   // Store the path to the cover image
     default: 'default-cover.jpg'  // Default cover image if none is provided
-  }
+  },
+  date: { type: Date, default: Date.now }
 }, { timestamps: true });  // Automatically adds createdAt and updatedAt fields
 
 // Export the Book model
