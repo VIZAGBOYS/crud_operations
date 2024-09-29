@@ -87,53 +87,51 @@
             <div class="alert alert-danger mt-4"><%= message.error %></div>
         <% } %>
 
-        <!-- Books Table -->
-        <h2 class="mt-5">My Books</h2>
-        <table class="table table-bordered table-hover mt-3">
-            <thead class="thead-light">
+    <h2>My Books</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Year</th>
+                <th>Author</th>
+                <th>Cover Page</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (books && books.length > 0) { %>
+                <% books.forEach((book, index) => { %>
                 <tr>
-                    <th>S.No</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Year</th>
-                    <th>Author</th>
-                    <th>Cover Page</th>
-                    <th>Actions</th>
+                    <td><%= index + 1 %></td> <!-- Serial Number -->
+                    <td><%= book.title %></td>
+                    <td class="description" title="<%= book.description %>"><%= book.description %></td>
+                    <td><%= book.publishYear %></td>
+                    <td><%= book.author %></td>
+                    <td>
+                        <% if (book.coverPagePath) { %>
+                            <img src="<%= book.coverPagePath %>" alt="<%= book.title %>" class="cover-img">
+                        <% } else { %>
+                            No image
+                        <% } %>
+                    </td>
+                    <td class="actions">
+                        <a href="/books/view/<%= book._id %>" class="btn view">View</a>
+                        <a href="/books/edit/<%= book._id %>" class="btn edit">Edit</a>
+                        <form action="/books/delete/<%= book._id %>?_method=DELETE" method="POST" class="delete-form">
+                            <button type="submit" class="btn delete-btn">Delete</button>
+                        </form>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                <% if (books && books.length > 0) { %>
-                    <% books.forEach((book, index) => { %>
-                    <tr>
-                        <td><%= index + 1 %></td>
-                        <td><%= book.title %></td>
-                        <td class="description" title="<%= book.description %>"><%= book.description %></td>
-                        <td><%= book.publishYear %></td>
-                        <td><%= book.author %></td>
-                        <td>
-                            <% if (book.coverPagePath) { %>
-                                <img src="<%= book.coverPagePath %>" alt="<%= book.title %>" class="img-thumbnail" width="100">
-                            <% } else { %>
-                                No image
-                            <% } %>
-                        </td>
-                        <td class="actions">
-                            <a href="/books/view/<%= book._id %>" class="btn btn-info btn-sm">View</a>
-                            <a href="/books/edit/<%= book._id %>" class="btn btn-warning btn-sm">Edit</a>
-                            <form action="/books/delete/<%= book._id %>?_method=DELETE" method="POST" class="d-inline-block delete-form">
-                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                    <% }) %>
-                <% } else { %>
-                    <tr>
-                        <td colspan="7">No books found</td>
-                    </tr>
-                <% } %>
-            </tbody>
-        </table>
-    </div>
+                <% }) %>
+            <% } else { %>
+                <tr>
+                    <td colspan="7">No books found</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
 
     <!-- Script for delete confirmation -->
     <script>
