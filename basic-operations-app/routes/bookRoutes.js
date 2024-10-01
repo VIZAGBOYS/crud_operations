@@ -1,9 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const bookController = require('../controllers/bookcontroller');
+const bookController = require('../controllers/bookController');
 
 // Middleware to ensure the user is authenticated
 // Example: router.use(isAuthenticated); // Uncomment if authentication middleware is used
+
+//homepage route
+
+router.get('/home', bookController.renderHome);
 
 // Route to render the page for creating a new book
 router.get('/', bookController.renderCreateBook);
