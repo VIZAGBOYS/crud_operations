@@ -32,5 +32,8 @@ router.get('/all', bookController.renderAllBooks);
 
 // Route to handle searching books by title or author
 router.get('/search', bookController.searchBooks);
+// In bookRoutes.js
+router.get('/book-of-the-day', bookController.getBookOfTheDay);
+
 
 module.exports = router;

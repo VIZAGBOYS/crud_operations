@@ -146,7 +146,39 @@ const renderAllBooks = async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 };
+const getBookOfTheDay = async (req, res) => {
+  try {
+    const today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
+    const sessionData = req.session.bookOfTheDay || {}; // Retrieve stored session data
 
+    // Check if the stored date is today
+    if (sessionData.date === today && sessionData.bookId) {
+      // Render the previously selected book
+      const book = await Book.findById(sessionData.bookId);
+      return res.render('book-of-the-day', { book });
+    }
+
+    // Fetch all books and select a new random one
+    const books = await Book.find({});
+    if (books.length === 0) {
+      return res.render('book-of-the-day', { book: null }); // Handle case where no books are available
+    }
+
+    const randomIndex = Math.floor(Math.random() * books.length);
+    const bookOfTheDay = books[randomIndex];
+
+    // Store the selected book's ID and today's date in the session
+    req.session.bookOfTheDay = {
+      bookId: bookOfTheDay._id,
+      date: today,
+    };
+
+    res.render('book-of-the-day', { book: bookOfTheDay });
+  } catch (err) {
+    console.error('Error fetching Book of the Day:', err);
+    res.status(500).send('Internal Server Error');
+  }
+};
 // Handle searching books by title or author
 const searchBooks = async (req, res) => {
   const searchQuery = req.query.query || ''; // Get the search query from the request
@@ -165,7 +197,6 @@ const searchBooks = async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 };
-
 // Exporting the controller functions to be used in routes
 module.exports = {
   renderHome,
@@ -177,4 +208,5 @@ module.exports = {
   renderViewBook,
   renderAllBooks,
   searchBooks,
+  getBookOfTheDay,
 };

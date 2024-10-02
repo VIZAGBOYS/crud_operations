@@ -76,6 +76,63 @@ textarea {
     width: calc(100% - 22px); /* Ensure it fits within the container */
     height: 100px; /* Set a fixed height for text area */
 }
+/* Book of the Day styling */
+.book-of-the-day {
+    background-color: #fff; /* Match form background */
+    border: 1px solid #ddd; /* Similar border as form */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Padding for spacing */
+    margin: 40px auto; /* Center the box with auto margin */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    max-width: 400px; /* Set a maximum width */
+    width: 90%; /* Use a percentage width to be responsive */
+    text-align: center; /* Center text within */
+}
+
+/* Image container to maintain aspect ratio */
+.book-image {
+    width: 150px; /* Fixed width for the image box */
+    height: 220px; /* Fixed height for the image box */
+    overflow: hidden; /* Hide overflow */
+    margin: 0 auto; /* Center the image box */
+    position: relative; /* For positioning the image inside */
+}
+
+.book-image img {
+    position: absolute; /* Position the image */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center the image */
+    min-width: 100%; /* Ensure the image covers the width */
+    min-height: 100%; /* Ensure the image covers the height */
+}
+
+.book-of-the-day h2 {
+    font-size: 1.5rem; /* Larger font size for title */
+    margin-bottom: 10px; /* Space below title */
+}
+
+.book-of-the-day p {
+    font-size: 1rem; /* Standard font size */
+    margin-top: 10px; /* Space above paragraph */
+}
+
+.book-of-the-day .btn {
+    display: block; /* Center button */
+    margin: 10px auto; /* Center button horizontally */
+    background-color: #007bff; /* Match button style */
+    color: #fff; /* White text */
+    padding: 10px; /* Padding for button */
+    text-align: center; /* Center text in button */
+    text-decoration: none; /* Remove underline */
+    border-radius: 4px; /* Rounded corners */
+    width: 80%; /* Button width */
+}
+
+.book-of-the-day .btn:hover {
+    background-color: #0056b3; /* Darker on hover */
+}
+
 
 /* Button styling */
 button {
